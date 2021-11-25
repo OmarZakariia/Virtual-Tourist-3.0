@@ -10,15 +10,26 @@ import MapKit
 
 class TravelMapViewController: UIViewController {
     
+    /*
+     Class to show the MapView and enable user to add/remove pins
+     
+     */
+    
     
     // MARK: - IBOutlets
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var deletePinsMessage: UIView!
+    
     
     
     // MARK: - Properties
+    
+    // CoreData
     var dataControllerClass : DataControllerClass!
     
+    var editMode : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +37,8 @@ class TravelMapViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: - UILongTapGestureRecognizer
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="34.782608695652179" y="97.767857142857139"/>
         </scene>
-        <!--Travel Map View Controller-->
+        <!--Virtual Tourist-->
         <scene sceneID="cwi-me-p2y">
             <objects>
                 <viewController id="wBU-aE-tpp" customClass="TravelMapViewController" customModule="Virtual_Tourist_3_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,8 +69,12 @@
                             <constraint firstItem="dGB-mN-Clj" firstAttribute="trailing" secondItem="ryc-LP-fGg" secondAttribute="trailing" id="xxE-Ph-C2S"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cyr-t2-wwN"/>
+                    <navigationItem key="navigationItem" title="Virtual Tourist" id="cyr-t2-wwN">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="FtN-Qp-HwF"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="deletePinsMessage" destination="dGB-mN-Clj" id="KAG-ZL-pDV"/>
+                        <outlet property="editButton" destination="FtN-Qp-HwF" id="EC1-9c-tBU"/>
                         <outlet property="mapView" destination="gIH-fM-Puv" id="0op-I5-F6r"/>
                     </connections>
                 </viewController>
