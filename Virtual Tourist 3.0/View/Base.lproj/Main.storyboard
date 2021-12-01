@@ -19,7 +19,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wBU-aE-tpp" kind="relationship" relationship="rootViewController" id="Mjw-vt-sEv"/>
+                        <segue destination="wBU-aE-tpp" kind="relationship" relationship="rootViewController" id="L5M-LB-DRx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTB-4y-ASd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -36,6 +36,10 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gIH-fM-Puv">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4q3-Jk-RUn" appends="YES" id="MkN-2F-Ynn"/>
+                                </connections>
                             </mapView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGB-mN-Clj" userLabel="Tap Pins To Delete">
                                 <rect key="frame" x="0.0" y="718" width="414" height="128"/>
@@ -75,10 +79,18 @@
                     <connections>
                         <outlet property="deletePinsMessage" destination="dGB-mN-Clj" id="KAG-ZL-pDV"/>
                         <outlet property="editButton" destination="FtN-Qp-HwF" id="EC1-9c-tBU"/>
+                        <outlet property="longPressGestureRecognizer" destination="4q3-Jk-RUn" id="cjD-br-oEQ"/>
                         <outlet property="mapView" destination="gIH-fM-Puv" id="0op-I5-F6r"/>
+                        <segue destination="ASi-pw-0BV" kind="show" identifier="GoToPhotosVC" id="s3F-iH-2aA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38e-FP-9sg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="4q3-Jk-RUn">
+                    <connections>
+                        <action selector="addPinToMapUILongTapGesture:" destination="wBU-aE-tpp" id="TKg-oa-f22"/>
+                        <outlet property="delegate" destination="gIH-fM-Puv" id="t0i-3T-AfU"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="850.72463768115949" y="97.767857142857139"/>
         </scene>
@@ -91,16 +103,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Nse-sK-UR8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="130"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="R4K-hy-pJB"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="ASi-pw-0BV" id="rkq-Hm-hsa"/>
-                                </connections>
                             </mapView>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4P9-Sz-Gt7">
-                                <rect key="frame" x="0.0" y="173" width="414" height="624"/>
+                                <rect key="frame" x="0.0" y="217" width="414" height="580"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ISW-ZR-JMK">
                                     <size key="itemSize" width="187" height="181"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -108,7 +117,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="ZPI-ne-XZ8" customClass="PhotoCell" customModule="Virtual_Tourist_3_0" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="ZPI-ne-XZ8" customClass="PhotoCellCollectionViewCell" customModule="Virtual_Tourist_3_0" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="181"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -143,10 +152,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="ASi-pw-0BV" id="OWn-SG-GY6"/>
-                                    <outlet property="delegate" destination="ASi-pw-0BV" id="tkT-lC-8NU"/>
-                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wN-lQ-jEh">
                                 <rect key="frame" x="0.0" y="796" width="414" height="66"/>
@@ -156,10 +161,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="New Collection"/>
-                                <connections>
-                                    <action selector="deleteSelected:" destination="ASi-pw-0BV" eventType="touchUpInside" id="q1e-Tw-zVd"/>
-                                    <action selector="newCollectionPhotos:" destination="ASi-pw-0BV" eventType="touchUpInside" id="ihw-ax-g0k"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4SF-et-mdj"/>
@@ -177,15 +178,11 @@
                             <constraint firstItem="4P9-Sz-Gt7" firstAttribute="top" secondItem="4SF-et-mdj" secondAttribute="top" constant="129" id="rnp-vY-Ujh"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="collectionView" destination="4P9-Sz-Gt7" id="s8q-D6-XCy"/>
-                        <outlet property="mapFragment" destination="Nse-sK-UR8" id="HVd-WD-Sbo"/>
-                        <outlet property="newCollectionButton" destination="6wN-lQ-jEh" id="ysW-dr-Ovr"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="3CB-eD-G4h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdZ-Ri-EV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="98"/>
+            <point key="canvasLocation" x="1710" y="98"/>
         </scene>
     </scenes>
     <resources>

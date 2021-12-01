@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = window?.rootViewController as! UINavigationController
         let travelMapVC = navigationController.topViewController as! TravelMapViewController
-        travelMapVC.dataControllerClass = dataControllerClass  
+        travelMapVC.dataControllerClass = dataControllerClass
+        
+        print("\(navigationController.viewControllers) navigation controller controllers")
 
         return true
     }
