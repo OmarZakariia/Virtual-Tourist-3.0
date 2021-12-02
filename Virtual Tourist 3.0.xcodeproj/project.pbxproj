@@ -25,6 +25,7 @@
 		325911862756734200FA76E4 /* PinsOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325911852756734200FA76E4 /* PinsOnMap.swift */; };
 		32591188275679D900FA76E4 /* PhotoCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32591187275679D900FA76E4 /* PhotoCellCollectionViewCell.swift */; };
 		3266B4E52757D652000B8C9F /* PhotosAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266B4E42757D652000B8C9F /* PhotosAlbumViewController.swift */; };
+		32D363802758570E00DFAAA5 /* PhotosAlbumViewController+UICollectionViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3637F2758570E00DFAAA5 /* PhotosAlbumViewController+UICollectionViewMethods.swift */; };
 		32F8A7CC2757229F00513B0C /* TravelMapViewController+MapViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F8A7CB2757229F00513B0C /* TravelMapViewController+MapViewMethods.swift */; };
 		600A01E62471E9EB2D711487 /* Pods_Virtual_Tourist_3_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8C64D8DCC88B1AD432E37D /* Pods_Virtual_Tourist_3_0.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		325911852756734200FA76E4 /* PinsOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinsOnMap.swift; sourceTree = "<group>"; };
 		32591187275679D900FA76E4 /* PhotoCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		3266B4E42757D652000B8C9F /* PhotosAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosAlbumViewController.swift; sourceTree = "<group>"; };
+		32D3637F2758570E00DFAAA5 /* PhotosAlbumViewController+UICollectionViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotosAlbumViewController+UICollectionViewMethods.swift"; sourceTree = "<group>"; };
 		32F8A7CB2757229F00513B0C /* TravelMapViewController+MapViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TravelMapViewController+MapViewMethods.swift"; sourceTree = "<group>"; };
 		3B8D7F34F115A41CB680AA32 /* Pods-Virtual Tourist 3.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Virtual Tourist 3.0.release.xcconfig"; path = "Target Support Files/Pods-Virtual Tourist 3.0/Pods-Virtual Tourist 3.0.release.xcconfig"; sourceTree = "<group>"; };
 		AF8C64D8DCC88B1AD432E37D /* Pods_Virtual_Tourist_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Virtual_Tourist_3_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				3266B4E42757D652000B8C9F /* PhotosAlbumViewController.swift */,
 				322F60BA274FBF8900D23F5C /* TravelMapViewController.swift */,
 				32F8A7CB2757229F00513B0C /* TravelMapViewController+MapViewMethods.swift */,
+				32D3637F2758570E00DFAAA5 /* PhotosAlbumViewController+UICollectionViewMethods.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				320B8BF1274FD36D004274AE /* FlickrClient.swift in Sources */,
 				32591188275679D900FA76E4 /* PhotoCellCollectionViewCell.swift in Sources */,
 				320B8BFB274FDCF6004274AE /* Pin+CoreDataProperties.swift in Sources */,
+				32D363802758570E00DFAAA5 /* PhotosAlbumViewController+UICollectionViewMethods.swift in Sources */,
 				322F60BF274FC04E00D23F5C /* DataControllerClass.swift in Sources */,
 				3266B4E52757D652000B8C9F /* PhotosAlbumViewController.swift in Sources */,
 				320B8BFF274FDD0B004274AE /* Photo+CoreDataProperties.swift in Sources */,

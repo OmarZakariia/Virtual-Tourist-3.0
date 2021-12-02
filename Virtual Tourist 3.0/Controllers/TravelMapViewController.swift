@@ -75,6 +75,17 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
 
     // MARK: - Functions
 
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        
+        super.setEditing(editing, animated: animated)
+        
+        // edit mode will be false when the tap pins to delete view is hidden
+        deletePinsMessage.isHidden = !isEditing
+        
+        // set "editMode" to true if the edit button is tapped
+        editMode = editing
+    }
 
     func setupForEditDoneButton() {
         self.navigationItem.rightBarButtonItem = self.editButtonItem
