@@ -147,7 +147,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
         photosAlbumVC.dataControllerClass = dataControllerClass
         
         // pass the pin
-        photosAlbumVC.pin = pinToBePassed
+        photosAlbumVC.pinPassedFromTravelVC = pinToBePassed
         
         // pass the coordinate
         
@@ -291,10 +291,10 @@ extension TravelMapViewController {
             photoAlbumViewController.dataControllerClass = dataControllerClass
 
             // pass the pin
-            photoAlbumViewController.pin = pinToBePassed
+            photoAlbumViewController.pinPassedFromTravelVC = pinToBePassed
 
             //pass the coordinates
-            photoAlbumViewController.coordinateSelected = coordinateFromSender
+            photoAlbumViewController.coordinatePassedFromTravelVC = coordinateFromSender
 
             // pass the flick images
             photoAlbumViewController.flickerPhotos = flickrImages
