@@ -32,6 +32,8 @@ class PhotosAlbumViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         print("PhotosAlbumViewController loaded")
+        print("PhotosAlbumViewController loaded")
+        print("PhotosAlbumViewController loaded")
     }
 
 
