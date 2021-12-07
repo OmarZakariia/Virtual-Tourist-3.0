@@ -75,6 +75,17 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
 
     // MARK: - Functions
 
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        
+        super.setEditing(editing, animated: animated)
+        
+        // edit mode will be false when the tap pins to delete view is hidden
+        deletePinsMessage.isHidden = !isEditing
+        
+        // set "editMode" to true if the edit button is tapped
+        editMode = editing
+    }
 
     func setupForEditDoneButton() {
         self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -136,7 +147,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
         photosAlbumVC.dataControllerClass = dataControllerClass
         
         // pass the pin
-        photosAlbumVC.pin = pinToBePassed
+        photosAlbumVC.pinPassedFromTravelVC = pinToBePassed
         
         // pass the coordinate
         
@@ -280,10 +291,10 @@ extension TravelMapViewController {
             photoAlbumViewController.dataControllerClass = dataControllerClass
 
             // pass the pin
-            photoAlbumViewController.pin = pinToBePassed
+            photoAlbumViewController.pinPassedFromTravelVC = pinToBePassed
 
             //pass the coordinates
-            photoAlbumViewController.coordinateSelected = coordinateFromSender
+            photoAlbumViewController.coordinatePassedFromTravelVC = coordinateFromSender
 
             // pass the flick images
             photoAlbumViewController.flickerPhotos = flickrImages

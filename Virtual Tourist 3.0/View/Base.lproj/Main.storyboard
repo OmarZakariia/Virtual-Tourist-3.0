@@ -161,6 +161,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="New Collection"/>
+                                <connections>
+                                    <action selector="deleteSelectedPhotos:" destination="ASi-pw-0BV" eventType="touchUpInside" id="iXL-W4-8Te"/>
+                                    <action selector="newCollectionButtonPressed:" destination="ASi-pw-0BV" eventType="touchUpInside" id="d44-CS-jYv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4SF-et-mdj"/>
@@ -179,6 +183,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3CB-eD-G4h"/>
+                    <connections>
+                        <outlet property="collectionView" destination="4P9-Sz-Gt7" id="oO6-7w-gzz"/>
+                        <outlet property="mapPiece" destination="Nse-sK-UR8" id="Ieh-TT-uB9"/>
+                        <outlet property="newCollectionButtonPressed" destination="6wN-lQ-jEh" id="yAa-G7-lSd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdZ-Ri-EV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
