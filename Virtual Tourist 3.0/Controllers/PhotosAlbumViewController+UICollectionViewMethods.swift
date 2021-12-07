@@ -95,7 +95,13 @@ extension PhotosAlbumViewController: UICollectionViewDataSource{
 extension PhotosAlbumViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            
+        selectedPhotosToDelete = selectedToDeleteFromIndexPath(collectionView.indexPathsForSelectedItems!)
         
+        let cell = collectionView.cellForItem(at: indexPath)
         
+        DispatchQueue.main.async {
+            cell?.contentView.alpha = 1.0
+        }
     }
 }

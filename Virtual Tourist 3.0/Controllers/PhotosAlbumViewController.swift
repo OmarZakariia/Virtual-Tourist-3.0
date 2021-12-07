@@ -187,14 +187,43 @@ class PhotosAlbumViewController: UIViewController {
     }
     
     
-// -----------------------------------------------------------------------------
+// MARK: - Functions
+    
+    // return an array of the selected items
+    func selectedToDeleteFromIndexPath(_ indexPathArray: [IndexPath]) -> [Int]{
+        
+        // array to store the selected items
+        var itemsSelected : [Int] = []
+        
+        // iterate the indexPath
+        for indexPath in indexPathArray {
+            
+            itemsSelected.append(indexPath.item)
+        
+        }
+        
+        return itemsSelected
+        
+        
+    }
+    
+    
     func addAnnotationToTheMapPiece() {
+        let annotation  = MKPointAnnotation()
+        annotation.coordinate = coordinatePassedFromTravelVC
+        mapPiece.addAnnotation(annotation)
+        mapPiece.showAnnotations([annotation], animated: true)
+        
+    }
+    
+    // display the chosen pin from TravelMapVC in the map piece
+    func displayPinChosen(location : CLLocation){
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapPiece.setRegion(coordinateRegion, animated: true)
         
     }
 
-    func  collectionViewSetupLayout() {
-        
-    }
+   
     
     // MARK: - IBAction Functions
     
@@ -215,9 +244,41 @@ class PhotosAlbumViewController: UIViewController {
         }
     }
     
-   
+    
+    
+    @IBAction func newCollectionButtonPressed(_ sender: UIButton) {
+        // if there are no selected photos then make a new request
+        // DELETE THE OLD COLLECTION NOT
+        // ACTIVITY INDICATOR SHOULD APPEAR while images are being downloaded
+        
+        if selectedPhotosToDelete.count == 0 {
+            // fetch request
+            fetchRequestForPhotos()
+        } else {
+            print("no photos selected to delete")
+        }
+        
+    }
+    
 }
 
 
 
 
+
+// MARK: - Extension for UICollectionViewLayout
+extension PhotosAlbumViewController {
+    
+    // custom view to the uicollectionview
+    func collectionViewSetupLayout() {
+        
+        let width = (view.frame.size.width - 20) / 3
+        
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.itemSize = CGSize(width: width, height: width)
+        
+        collectionView.isHidden = false
+        collectionView.allowsMultipleSelection = true
+    }
+}

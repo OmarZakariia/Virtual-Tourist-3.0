@@ -163,6 +163,7 @@
                                 <state key="normal" title="New Collection"/>
                                 <connections>
                                     <action selector="deleteSelectedPhotos:" destination="ASi-pw-0BV" eventType="touchUpInside" id="iXL-W4-8Te"/>
+                                    <action selector="newCollectionButtonPressed:" destination="ASi-pw-0BV" eventType="touchUpInside" id="d44-CS-jYv"/>
                                 </connections>
                             </button>
                         </subviews>

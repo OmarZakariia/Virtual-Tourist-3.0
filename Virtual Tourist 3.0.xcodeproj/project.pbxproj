@@ -115,10 +115,10 @@
 				322F60B3274FBE3800D23F5C /* Info.plist */,
 				322F60BD274FC04200D23F5C /* Model */,
 				320B8BEF274FD35C004274AE /* Networking  */,
+				32591187275679D900FA76E4 /* PhotoCellCollectionViewCell.swift */,
+				325911852756734200FA76E4 /* PinsOnMap.swift */,
 				320B8C00274FE49D004274AE /* UpdatesOnUI.swift */,
 				322F60BC274FC03B00D23F5C /* View */,
-				325911852756734200FA76E4 /* PinsOnMap.swift */,
-				32591187275679D900FA76E4 /* PhotoCellCollectionViewCell.swift */,
 			);
 			path = "Virtual Tourist 3.0";
 			sourceTree = "<group>";
@@ -127,9 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				3266B4E42757D652000B8C9F /* PhotosAlbumViewController.swift */,
+				32D3637F2758570E00DFAAA5 /* PhotosAlbumViewController+UICollectionViewMethods.swift */,
 				322F60BA274FBF8900D23F5C /* TravelMapViewController.swift */,
 				32F8A7CB2757229F00513B0C /* TravelMapViewController+MapViewMethods.swift */,
-				32D3637F2758570E00DFAAA5 /* PhotosAlbumViewController+UICollectionViewMethods.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
