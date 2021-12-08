@@ -44,8 +44,10 @@ extension TravelMapViewController: MKMapViewDelegate{
             // deselect the pin
             mapView.deselectAnnotation(view.annotation, animated: false)
         }
+        
         // edit mode is true, remove the pin from the view and core data
         else {
+        
             // loop the pins and remove them
             for pin in pins {
                 

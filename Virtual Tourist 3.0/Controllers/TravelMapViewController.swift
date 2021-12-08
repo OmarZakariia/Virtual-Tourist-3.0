@@ -20,7 +20,9 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
     // MARK: - IBOutlet/
 
     @IBOutlet weak var mapView: MKMapView!
+    
     @IBOutlet weak var editButton: UIBarButtonItem!
+    
     @IBOutlet weak var deletePinsMessage: UIView!
 
     @IBOutlet var longPressGestureRecognizer: UILongPressGestureRecognizer!
@@ -50,28 +52,22 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
     // array of flickerImages that are downloaded
     var flickrImages : [FlickrImage] = [FlickrImage]()
     
-    
-
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // call editButton
         setupForEditDoneButton()
+        
+        // call function responsible fore longTapGesture setup
         setupLongTapGesture()
+        
         // call the fetch request for pins
         fetchRequestForPins()
         
         print("view has loaded")
-        
-        
-
+     
     }
-    
-   
-    
-    
 
     // MARK: - Functions
 
@@ -110,14 +106,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
     
     
     
-    /*
-     When the user taps on the on map I need to
-     
-     1. add the pin to the map
-     2. add the newly added pin to core data
-     3. request filcker photos from the newly pin
-     */
-    
+ 
     
     fileprivate func initiatePhotosAlbumViewController() {
         /*
@@ -149,36 +138,20 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
         
         // check that I am not in edit mode
         let state = sender.state
+        
         switch state {
+            
         case .ended:
+            
             if !editMode{
-                
-                // call setupLongTapGesture function
-                
                 
                 // create and drop the pins on the map
                 addPinsToMap(sender: sender)
-                
-                
-    //            initiatePhotosAlbumViewController()
-                
-    //            performSegue(withIdentifier: "GoToPhotosAlbumVC", sender: sender)
 
-                
-    //            self.dismiss(animated: true, completion: nil)
-    //
-    //            navigationController?.pushViewController(photosAlbumVC, animated: true)
-                
-              
-                
             }
         default:
             break
         }
-       
-        
-      
-        
     }
     
     func addPinsToMap( sender: UILongPressGestureRecognizer){
@@ -241,24 +214,11 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
     
     func setupLongTapGesture(){
          
-//        longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longTapGesturePressed(_ :)))
         longPressGestureRecognizer.minimumPressDuration = 0.3
+        
         longPressGestureRecognizer.delegate = self
         
     }
-    
-//    @objc func longTapGesturePressed(_ recognizer: UILongPressGestureRecognizer){
-////        switch recognizer.state {
-////        case.began:
-////            initiatePhotosAlbumViewController()
-////
-////        case .ended:
-////            break
-////
-////        default:
-////            print("break case")
-////        }
-//    }
     
 }
 
