@@ -247,18 +247,18 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
         
     }
     
-    @objc func longTapGesturePressed(_ recognizer: UILongPressGestureRecognizer){
-//        switch recognizer.state {
-//        case.began:
-//            initiatePhotosAlbumViewController()
-//
-//        case .ended:
-//            break
-//
-//        default:
-//            print("break case")
-//        }
-    }
+//    @objc func longTapGesturePressed(_ recognizer: UILongPressGestureRecognizer){
+////        switch recognizer.state {
+////        case.began:
+////            initiatePhotosAlbumViewController()
+////
+////        case .ended:
+////            break
+////
+////        default:
+////            print("break case")
+////        }
+//    }
     
 }
 
