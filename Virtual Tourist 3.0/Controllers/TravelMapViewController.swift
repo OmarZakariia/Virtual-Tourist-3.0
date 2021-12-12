@@ -71,6 +71,15 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
 
     // MARK: - Functions
 
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        deletePinsMessage.isHidden = !editing
+        
+        print("set editing called")
+        
+        editMode = editing
+    }
 
     func setupForEditDoneButton() {
         self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -128,6 +137,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
         photosAlbumVC.pin = pinToBePassed
         
         // pass the coordinate
+        photosAlbumVC.coordinateSelected
         
         // pass the images
         photosAlbumVC.flickerPhotos = flickrImages
@@ -147,6 +157,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
                 
                 // create and drop the pins on the map
                 addPinsToMap(sender: sender)
+//                initiatePhotosAlbumViewController()
 
             }
         default:
@@ -160,6 +171,10 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
         
         // get the coordinate where the user tapped the pin
         let coordinateTouched : CLLocationCoordinate2D = mapView.convert(longTapGestureLocation, toCoordinateFrom: mapView)
+        
+        pinCoordinate = coordinateTouched
+        
+        print("\(coordinateTouched) coordinateTouchedcoordinateTouched")
         
         // create an annotation of type MKPointAnnotation to add on the mapview
         let annotation : MKPointAnnotation = MKPointAnnotation()

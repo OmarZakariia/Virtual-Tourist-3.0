@@ -39,7 +39,7 @@ extension TravelMapViewController: MKMapViewDelegate{
                 }
             }
             // go to PhotosAlbumViewController
-            
+            performSegue(withIdentifier: "GoToPhotosVC", sender: selectedCoordinate)
             
             // deselect the pin
             mapView.deselectAnnotation(view.annotation, animated: false)
