@@ -117,31 +117,31 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate, CL
     
  
     
-    fileprivate func initiatePhotosAlbumViewController() {
-        /*
-         I need to pass 4 things
-         1. data Controller
-         2. pin
-         3. coordinate
-         4. flickerImages
-         */
-        
-        
-        // move to PhotosAlbumViewController
-        let photosAlbumVC = PhotosAlbumViewController()
-        
-        // pass the dataController
-        photosAlbumVC.dataControllerClass = dataControllerClass
-        
-        // pass the pin
-        photosAlbumVC.pin = pinToBePassed
-        
-        // pass the coordinate
-        photosAlbumVC.coordinateSelected
-        
-        // pass the images
-        photosAlbumVC.flickerPhotos = flickrImages
-    }
+//    fileprivate func initiatePhotosAlbumViewController() {
+//        /*
+//         I need to pass 4 things
+//         1. data Controller
+//         2. pin
+//         3. coordinate
+//         4. flickerImages
+//         */
+//
+//
+//        // move to PhotosAlbumViewController
+//        let photosAlbumVC = PhotosAlbumViewController()
+//
+//        // pass the dataController
+//        photosAlbumVC.dataControllerClass = dataControllerClass
+//
+//        // pass the pin
+//        photosAlbumVC.pin = pinToBePassed
+//
+//        // pass the coordinate
+//        photosAlbumVC.coordinateSelected
+//
+//        // pass the images
+//        photosAlbumVC.flickerPhotos = flickrImages
+//    }
     
     @IBAction func addPinToMapUILongTapGesture(_ sender: UILongPressGestureRecognizer) {
         print("a long tap gesture has been recognized")
@@ -255,10 +255,11 @@ extension TravelMapViewController {
             photoAlbumViewController.dataControllerClass = dataControllerClass
 
             // pass the pin
-            photoAlbumViewController.pin = pinToBePassed
+            photoAlbumViewController.pinPassedFromTravelMapViewController = pinToBePassed
+            print("\(pinToBePassed)pinToBePassed")
 
             //pass the coordinates
-            photoAlbumViewController.coordinateSelected = coordinateFromSender
+            photoAlbumViewController.coordianteForPinPassedFromTravelMapViewController = coordinateFromSender
 
             // pass the flick images
             photoAlbumViewController.flickerPhotos = flickrImages
