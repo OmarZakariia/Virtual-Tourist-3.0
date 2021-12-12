@@ -180,6 +180,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3CB-eD-G4h"/>
+                    <connections>
+                        <outlet property="collectionView" destination="4P9-Sz-Gt7" id="ROt-Lk-4Rp"/>
+                        <outlet property="mapPiece" destination="Nse-sK-UR8" id="AZm-r4-mVa"/>
+                        <outlet property="newCollectionButton" destination="6wN-lQ-jEh" id="IyD-fr-Qp3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdZ-Ri-EV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

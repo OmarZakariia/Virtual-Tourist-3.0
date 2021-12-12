@@ -254,11 +254,11 @@ extension TravelMapViewController {
             // pass the data controller
             photoAlbumViewController.dataControllerClass = dataControllerClass
 
-            // pass the pin
+            // pass the pin selected to PhotosAlbumViewControlle
             photoAlbumViewController.pinPassedFromTravelMapViewController = pinToBePassed
             print("\(pinToBePassed)pinToBePassed")
 
-            //pass the coordinates
+            //pass the coordinates of the pin selected to PhotosAlbumViewController
             photoAlbumViewController.coordianteForPinPassedFromTravelMapViewController = coordinateFromSender
 
             // pass the flick images
