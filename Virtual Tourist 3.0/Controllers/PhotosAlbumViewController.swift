@@ -152,6 +152,48 @@ class PhotosAlbumViewController: UIViewController {
     }
     func requestFlickrPhotosFromPinPhotosVC(){
         
+        // fetch a new collection of photos associated with a pin and save them
+        FlickrClient.sharedInstance().getPhotosPath(lat: coordianteForPinPassedFromTravelMapViewController.latitude, lon: coordianteForPinPassedFromTravelMapViewController.longitude) { photos, error in
+            
+            // check for photos
+            if let photos = photos {
+                
+                // update the flickrPhotos array with the new collection of photos fetched
+                /// TODO: - should I delete the old photos ?
+                self.flickerPhotos = photos
+                
+                // loop through the photos urls
+                for photo in self.flickerPhotos {
+                    
+                    // create a new constant to store the new photo urls
+                    let photoPath = photo.photoPath
+                    
+                    // create a new instance of each 'photo' item in the array of the new received photos collection
+                    let newPhotoCoreData = Photo(imageURL: photoPath, context: self.dataControllerClass.viewContext)
+                    
+                    // reference
+                    newPhotoCoreData.pin = self.pinPassedFromTravelMapViewController
+                    
+                    /// TODO;- Should I empyt the coreDataPhotos array before updating it ?
+                    self.coreDataPhotos.append(newPhotoCoreData)
+                    
+                    // save the context
+                    try? self.dataControllerClass.viewContext.save()
+                    
+                }
+                // dispatch
+                performUIUpdatesOnTheMainThread {
+                    
+                    // reload the collection view with the new photos fetched
+                    self.collectionView.reloadData()
+                }
+            }
+            // else an error occurred
+            else {
+                print(error ?? "empty error from  requestFlickrPhotosFromPinPhotosVC")
+            }
+        }
+        
     }
 }
 
