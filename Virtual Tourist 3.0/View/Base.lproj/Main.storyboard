@@ -162,6 +162,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="New Collection"/>
+                                <connections>
+                                    <action selector="deleteSelectedButtonPressed:" destination="ASi-pw-0BV" eventType="touchUpInside" id="bnH-sD-cjz"/>
+                                    <action selector="newCollectionPhotosButtonPressed:" destination="ASi-pw-0BV" eventType="touchUpInside" id="ddr-f5-R00"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4SF-et-mdj"/>

@@ -108,7 +108,62 @@ class PhotosAlbumViewController: UIViewController {
     }
     
     
+    // MARK: - IBActions + Related functions
+    @IBAction func deleteSelectedButtonPressed(_ sender: Any){
+        
+        // are there any selected items ?
+        if let selectedItems : [IndexPath] =  collectionView.indexPathsForSelectedItems {
+            
+            // sort the items
+            let items = selectedItems.map{$0.item}.sorted().reversed()
+            
+            // loop through items in the array
+            for item in items {
+                
+                // delete items
+                dataControllerClass.viewContext.delete(coreDataPhotos.remove(at: item))
+                
+                // save the context
+                try? dataControllerClass.viewContext.save()
+            }
+            
+            // remove items from the collection view
+            /// TODO:- Should I remove it on the main thread?
+            collectionView.deleteItems(at: selectedItems)
+        }
+    }
     
+    // return an array with the addresses of the selected items
+    func selectedPhotosToDeleteFromIndexPath(_ indexPathArray: [IndexPath]) ->[Int] {
+        
+        // array to store the selected items
+        var selected : [Int] = []
+        
+        // loop through the indexPath in the indexPathArray and append the new indexPath
+        for indexPath in indexPathArray {
+            
+            // append the new indexPath in the indexPathArray
+            selected.append(indexPath.item)
+        }
+        
+        return selected
+    }
+    
+    @IBAction func newCollectionPhotosButtonPressed(_ sender: UIButton) {
+        // are there any selected items ?
+        if selectedPhotosToDelete.count == 0 {
+        
+            // request new collection photos
+            /// TODO:-  should I remove the photos from the coredata and/or flickrPhotos array here ?// MARK: -
+            requestFlickrPhotosFromPinPhotosVC()
+        }
+        // else
+        else {
+             // there are photos selected, do nothing
+            print("there are selected photos, cant request a new set of collection")
+        }
+        
+    }
 
 
 
