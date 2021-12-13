@@ -108,6 +108,12 @@ class PhotosAlbumViewController: UIViewController {
     }
     
     
+    // add pin on the mapPiece
+    func addPinToTheMapPiece(location : CLLocation){
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapPiece.setRegion(coordinateRegion, animated: true)
+    }
+    
     // MARK: - IBActions + Related functions
     @IBAction func deleteSelectedButtonPressed(_ sender: Any){
         
