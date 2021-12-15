@@ -153,6 +153,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ASi-pw-0BV" id="aaR-Ex-Ahn"/>
+                                    <outlet property="delegate" destination="ASi-pw-0BV" id="fjX-v0-5ml"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wN-lQ-jEh">
                                 <rect key="frame" x="0.0" y="796" width="414" height="66"/>
