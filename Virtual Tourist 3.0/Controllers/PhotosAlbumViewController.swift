@@ -72,6 +72,13 @@ class PhotosAlbumViewController: UIViewController {
         // hide new collection button
         //        newCollectionButton.isHidden = false
         
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // add a pin to the map piece
         addAnnotationToTheMapPiece()
         
@@ -80,11 +87,6 @@ class PhotosAlbumViewController: UIViewController {
         
         // look for persisted photos object
         fetchRequestForPhotos()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         performUIUpdatesOnTheMainThread {
             
@@ -101,6 +103,8 @@ class PhotosAlbumViewController: UIViewController {
         let annotationToBeAdded = MKPointAnnotation()
         
         annotationToBeAdded.coordinate = coordianteForPinPassedFromTravelMapViewController
+        
+        
         
         mapPiece.addAnnotation(annotationToBeAdded)
         
