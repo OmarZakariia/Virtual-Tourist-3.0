@@ -165,6 +165,9 @@ class PhotosAlbumViewController: UIViewController {
         
             // request new collection photos
             /// TODO:-  should I remove the photos from the coredata and/or flickrPhotos array here ?// MARK: -
+            
+            coreDataPhotos.removeAll()
+//            flickerPhotos.removeAll()
             requestFlickrPhotosFromPinPhotosVC()
         }
         // else
