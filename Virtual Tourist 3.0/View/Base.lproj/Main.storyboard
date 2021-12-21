@@ -80,6 +80,7 @@
                     <connections>
                         <outlet property="deletePinsMessage" destination="dGB-mN-Clj" id="KAG-ZL-pDV"/>
                         <outlet property="editButton" destination="FtN-Qp-HwF" id="EC1-9c-tBU"/>
+                        <outlet property="longPressGestureRecognizer" destination="4q3-Jk-RUn" id="gZP-hg-VJB"/>
                         <outlet property="mapView" destination="gIH-fM-Puv" id="OpU-zM-OSY"/>
                         <segue destination="ASi-pw-0BV" kind="show" identifier="GoToPhotosVC" id="s3F-iH-2aA"/>
                     </connections>
