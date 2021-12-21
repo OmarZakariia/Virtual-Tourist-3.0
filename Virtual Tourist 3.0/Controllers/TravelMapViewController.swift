@@ -55,6 +55,11 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        longPressGestureRecognizer.numberOfTapsRequired = 1
+        longPressGestureRecognizer.minimumPressDuration = 0.3
+        longPressGestureRecognizer.delegate = self
+        longPressGestureRecognizer.delaysTouchesBegan = true
 
         // call editButton
         setupForEditDoneButton()
@@ -164,6 +169,38 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
 //            break
 //        }
 //    }
+    
+    
+    
+    
+    @IBAction func addPinsToTheMapLongTap(_ sender: UILongPressGestureRecognizer) {
+        
+        print("addPinsToTheMapLongTap called")
+        
+        
+        
+        
+        if sender.state != .began{
+            if !editMode {
+                
+                let gestureTouchLocation : CGPoint = sender.location(in: mapView)
+                
+                let coordinateToAdd : CLLocationCoordinate2D = mapView.convert(gestureTouchLocation, toCoordinateFrom: mapView)
+                
+                let annotation : MKPointAnnotation = MKPointAnnotation()
+                
+                annotation.coordinate = coordinateToAdd
+                
+                mapView.addAnnotation(annotation)
+                
+                addPinToCoreData(coordiante: coordinateToAdd)
+                
+                requestFlickrPhotosFromPin(coordinate: coordinateToAdd)
+            
+        }
+        }
+            
+    }
     
     @IBAction func addPinsToMap(_ sender: UITapGestureRecognizer) {
         print("new pin added")
