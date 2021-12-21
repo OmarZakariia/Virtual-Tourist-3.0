@@ -42,7 +42,7 @@ extension PhotosAlbumViewController: UICollectionViewDataSource{
                 cell.photoImageView.image = photo
                 
                 // stop the activity indicator
-                cell.activityIndicator.stopAnimating()
+//                cell.activityIndicator.stopAnimating()
             }
         }
         //        case 2 : there is no value, perform a web request

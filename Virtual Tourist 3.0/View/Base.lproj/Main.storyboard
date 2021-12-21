@@ -129,6 +129,7 @@
                                                 </imageView>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="DhV-U2-MGC">
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="181"/>
+                                                    <color key="color" red="1" green="0.37891308109999999" blue="0.42538254669999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                         </view>

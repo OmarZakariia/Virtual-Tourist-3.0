@@ -140,6 +140,8 @@ class PhotosAlbumViewController: UIViewController {
             // remove items from the collection view
             /// TODO:- Should I remove it on the main thread?
             collectionView.deleteItems(at: selectedItems)
+            
+                
         }
     }
     
