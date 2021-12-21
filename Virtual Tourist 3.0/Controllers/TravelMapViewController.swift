@@ -168,24 +168,26 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func addPinsToMap(_ sender: UITapGestureRecognizer) {
         print("new pin added")
         
-        
-        
-        if !editMode {
-            
-            let gestureTouchLocation : CGPoint = sender.location(in: mapView)
-            
-            let coordinateToAdd : CLLocationCoordinate2D = mapView.convert(gestureTouchLocation, toCoordinateFrom: mapView)
-            
-            let annotation : MKPointAnnotation = MKPointAnnotation()
-            
-            annotation.coordinate = coordinateToAdd
-            
-            mapView.addAnnotation(annotation)
-            
-            addPinToCoreData(coordiante: coordinateToAdd)
-            
-            requestFlickrPhotosFromPin(coordinate: coordinateToAdd)
+        if sender.state != .began{
+            if !editMode {
+                
+                let gestureTouchLocation : CGPoint = sender.location(in: mapView)
+                
+                let coordinateToAdd : CLLocationCoordinate2D = mapView.convert(gestureTouchLocation, toCoordinateFrom: mapView)
+                
+                let annotation : MKPointAnnotation = MKPointAnnotation()
+                
+                annotation.coordinate = coordinateToAdd
+                
+                mapView.addAnnotation(annotation)
+                
+                addPinToCoreData(coordiante: coordinateToAdd)
+                
+                requestFlickrPhotosFromPin(coordinate: coordinateToAdd)
+            }
         }
+        
+        
         
     }
     
