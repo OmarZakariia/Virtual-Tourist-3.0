@@ -69,6 +69,7 @@ class PhotosAlbumViewController: UIViewController {
         // Do any additional setup after loading the view.
         print("PhotosAlbumViewController loaded")
         
+        
         // hide new collection button
         //        newCollectionButton.isHidden = false
         
@@ -168,8 +169,12 @@ class PhotosAlbumViewController: UIViewController {
             // request new collection photos
             /// TODO:-  should I remove the photos from the coredata and/or flickrPhotos array here ?// MARK: -
             
-            coreDataPhotos.removeAll()
-//            flickerPhotos.removeAll()
+//            coreDataPhotos.removeAll()
+            // remove core data photos
+            for photo in coreDataPhotos {
+                dataControllerClass.viewContext.delete(photo)
+                try? dataControllerClass.viewContext.save()
+            }
             requestFlickrPhotosFromPinPhotosVC()
         }
         // else
