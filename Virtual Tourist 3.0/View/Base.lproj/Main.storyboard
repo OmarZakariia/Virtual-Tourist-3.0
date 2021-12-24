@@ -39,7 +39,6 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="wBU-aE-tpp" id="SYd-K9-AeN"/>
-                                    <outletCollection property="gestureRecognizers" destination="LDc-cY-Dtq" appends="YES" id="a5p-hy-H6A"/>
                                 </connections>
                             </mapView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGB-mN-Clj" userLabel="Tap Pins To Delete">
@@ -85,12 +84,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38e-FP-9sg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.29999999999999999" id="4q3-Jk-RUn"/>
-                <tapGestureRecognizer id="LDc-cY-Dtq">
-                    <connections>
-                        <action selector="addPinsToMap:" destination="wBU-aE-tpp" id="dkC-qU-XCe"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="850.72463768115949" y="97.767857142857139"/>
         </scene>

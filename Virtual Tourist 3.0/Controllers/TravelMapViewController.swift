@@ -25,8 +25,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var deletePinsMessage: UIView!
 
-    @IBOutlet var longPressGestureRecognizer: UILongPressGestureRecognizer!
-    
+
 
 
     // MARK: - Properties
@@ -59,8 +58,8 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
         // call editButton
         setupForEditDoneButton()
         
-        // call function responsible fore longTapGesture setup
-//        setupLongTapGesture()
+
+        setupLongTapGestureRecognizer()
         
         // call the fetch request for pins
         fetchRequestForPins()
@@ -117,58 +116,31 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     
  
     
-//    fileprivate func initiatePhotosAlbumViewController() {
-//        /*
-//         I need to pass 4 things
-//         1. data Controller
-//         2. pin
-//         3. coordinate
-//         4. flickerImages
-//         */
-//
-//
-//        // move to PhotosAlbumViewController
-//        let photosAlbumVC = PhotosAlbumViewController()
-//
-//        // pass the dataController
-//        photosAlbumVC.dataControllerClass = dataControllerClass
-//
-//        // pass the pin
-//        photosAlbumVC.pin = pinToBePassed
-//
-//        // pass the coordinate
-//        photosAlbumVC.coordinateSelected
-//
-//        // pass the images
-//        photosAlbumVC.flickerPhotos = flickrImages
-//    }
+
     
-//    @IBAction func addPinToMapUILongTapGesture(_ sender: UILongPressGestureRecognizer) {
-//        print("a long tap gesture has been recognized")
-//
-//        // check that I am not in edit mode
-//        let state = sender.state
-//
-//        switch state {
-//
-//        case .ended:
-//
-//            if !editMode{
-//
-//                // create and drop the pins on the map
-//                addPinsToMap(sender: sender)
-////                initiatePhotosAlbumViewController()
-//
-//            }
-//        default:
-//            break
-//        }
-//    }
     
-    @IBAction func addPinsToMap(_ sender: UITapGestureRecognizer) {
+    func setupLongTapGestureRecognizer(){
+        
+        // create a new long tap gesture recognizer
+        let longTapGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(addPinsToMap))
+        
+        // add the long tap gesture to the map view
+        mapView.addGestureRecognizer(longTapGestureRecognizer)
+        
+        // set the min duration for the long press gesture to 0.5
+        longTapGestureRecognizer.minimumPressDuration = 0.5
+        
+        // assign the delegate
+        longTapGestureRecognizer.delegate = self
+    }
+    
+    
+    @IBAction func addPinsToMap(_ sender: UILongPressGestureRecognizer) {
         print("new pin added")
         
-        
+        if sender.state != .began {
+            return
+        }
         
         if !editMode {
             
@@ -189,33 +161,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-//    func addPinsToMap( sender: UILongPressGestureRecognizer){
-//        // coordinates tapped on the map
-//        let longTapGestureLocation : CGPoint = sender.location(in: self.mapView)
-//
-//        // get the coordinate where the user tapped the pin
-//        let coordinateTouched : CLLocationCoordinate2D = mapView.convert(longTapGestureLocation, toCoordinateFrom: mapView)
-//
-//        pinCoordinate = coordinateTouched
-//
-//        print("\(coordinateTouched) coordinateTouchedcoordinateTouched")
-//
-//        // create an annotation of type MKPointAnnotation to add on the mapview
-//        let annotation : MKPointAnnotation = MKPointAnnotation()
-//
-//        // add the coordinateTouched to the annotations' coordinate
-//        annotation.coordinate = coordinateTouched
-//
-//        // add the pin to mapView
-//        mapView.addAnnotation(annotation)
-//
-//        // add the pin  to the core data
-//        addPinToCoreData(coordiante: coordinateTouched)
-//
-//        // request the photos from the pin coordinates
-//        requestFlickrPhotosFromPin(coordinate: coordinateTouched)
-//
-//    }
+
     
     func requestFlickrPhotosFromPin(coordinate: CLLocationCoordinate2D){
         FlickrClient.sharedInstance().getPhotosPath(lat: coordinate.latitude, lon: coordinate.longitude) { photos, error in
@@ -251,13 +197,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-//    func setupLongTapGesture(){
-//
-//        longPressGestureRecognizer.minimumPressDuration = 0.3
-//
-//        longPressGestureRecognizer.delegate = self
-//
-//    }
+
     
 }
 
