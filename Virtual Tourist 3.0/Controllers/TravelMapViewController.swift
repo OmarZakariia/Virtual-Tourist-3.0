@@ -25,7 +25,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var deletePinsMessage: UIView!
 
-    @IBOutlet var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    
     
 
 
@@ -56,16 +56,14 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        longPressGestureRecognizer.numberOfTapsRequired = 1
-        longPressGestureRecognizer.minimumPressDuration = 0.3
-        longPressGestureRecognizer.delegate = self
-        longPressGestureRecognizer.delaysTouchesBegan = true
+      
+        // call the setup Long Tap Gesture function
+        setupLongTapGestureRecognizer()
 
         // call editButton
         setupForEditDoneButton()
         
-        // call function responsible fore longTapGesture setup
-//        setupLongTapGesture()
+
         
         // call the fetch request for pins
         fetchRequestForPins()
@@ -120,58 +118,6 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     
- 
-    
-//    fileprivate func initiatePhotosAlbumViewController() {
-//        /*
-//         I need to pass 4 things
-//         1. data Controller
-//         2. pin
-//         3. coordinate
-//         4. flickerImages
-//         */
-//
-//
-//        // move to PhotosAlbumViewController
-//        let photosAlbumVC = PhotosAlbumViewController()
-//
-//        // pass the dataController
-//        photosAlbumVC.dataControllerClass = dataControllerClass
-//
-//        // pass the pin
-//        photosAlbumVC.pin = pinToBePassed
-//
-//        // pass the coordinate
-//        photosAlbumVC.coordinateSelected
-//
-//        // pass the images
-//        photosAlbumVC.flickerPhotos = flickrImages
-//    }
-    
-//    @IBAction func addPinToMapUILongTapGesture(_ sender: UILongPressGestureRecognizer) {
-//        print("a long tap gesture has been recognized")
-//
-//        // check that I am not in edit mode
-//        let state = sender.state
-//
-//        switch state {
-//
-//        case .ended:
-//
-//            if !editMode{
-//
-//                // create and drop the pins on the map
-//                addPinsToMap(sender: sender)
-////                initiatePhotosAlbumViewController()
-//
-//            }
-//        default:
-//            break
-//        }
-//    }
-    
-    
-    
     
     @IBAction func addPinsToTheMapLongTap(_ sender: UILongPressGestureRecognizer) {
         
@@ -202,26 +148,44 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
             
     }
     
+    func setupLongTapGestureRecognizer(){
+        
+        // create the Long Tapn Gesture
+        let longTapGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(addPinsToMap))
+        
+        // Add the long tap gesture to the map view
+        mapView.addGestureRecognizer(longTapGestureRecognizer)
+        
+        // set the min press duration to 0.5
+        longTapGestureRecognizer.minimumPressDuration = 0.5
+        
+        // assign the Long Tap Gesture Delegate
+        longTapGestureRecognizer.delegate = self
+        
+        
+    }
+    
     @IBAction func addPinsToMap(_ sender: UITapGestureRecognizer) {
         print("new pin added")
         
         if sender.state != .began{
-            if !editMode {
-                
-                let gestureTouchLocation : CGPoint = sender.location(in: mapView)
-                
-                let coordinateToAdd : CLLocationCoordinate2D = mapView.convert(gestureTouchLocation, toCoordinateFrom: mapView)
-                
-                let annotation : MKPointAnnotation = MKPointAnnotation()
-                
-                annotation.coordinate = coordinateToAdd
-                
-                mapView.addAnnotation(annotation)
-                
-                addPinToCoreData(coordiante: coordinateToAdd)
-                
-                requestFlickrPhotosFromPin(coordinate: coordinateToAdd)
-            }
+            return
+        }
+        if !editMode {
+            
+            let gestureTouchLocation : CGPoint = sender.location(in: mapView)
+            
+            let coordinateToAdd : CLLocationCoordinate2D = mapView.convert(gestureTouchLocation, toCoordinateFrom: mapView)
+            
+            let annotation : MKPointAnnotation = MKPointAnnotation()
+            
+            annotation.coordinate = coordinateToAdd
+            
+            mapView.addAnnotation(annotation)
+            
+            addPinToCoreData(coordiante: coordinateToAdd)
+            
+            requestFlickrPhotosFromPin(coordinate: coordinateToAdd)
         }
         
         
@@ -290,13 +254,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-//    func setupLongTapGesture(){
-//
-//        longPressGestureRecognizer.minimumPressDuration = 0.3
-//
-//        longPressGestureRecognizer.delegate = self
-//
-//    }
+
     
 }
 

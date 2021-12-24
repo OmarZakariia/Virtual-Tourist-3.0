@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outlet property="delegate" destination="wBU-aE-tpp" id="SYd-K9-AeN"/>
+                                    <outlet property="delegate" destination="wBU-aE-tpp" id="i36-dX-6Kg"/>
                                 </connections>
                             </mapView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGB-mN-Clj" userLabel="Tap Pins To Delete">
@@ -79,17 +79,11 @@
                     <connections>
                         <outlet property="deletePinsMessage" destination="dGB-mN-Clj" id="KAG-ZL-pDV"/>
                         <outlet property="editButton" destination="FtN-Qp-HwF" id="EC1-9c-tBU"/>
-                        <outlet property="longPressGestureRecognizer" destination="4q3-Jk-RUn" id="gZP-hg-VJB"/>
                         <outlet property="mapView" destination="gIH-fM-Puv" id="OpU-zM-OSY"/>
                         <segue destination="ASi-pw-0BV" kind="show" identifier="GoToPhotosVC" id="s3F-iH-2aA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38e-FP-9sg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.29999999999999999" id="4q3-Jk-RUn">
-                    <connections>
-                        <action selector="addPinsToTheMapLongTap:" destination="wBU-aE-tpp" id="AWr-0R-JRm"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="850.72463768115949" y="97.767857142857139"/>
         </scene>
