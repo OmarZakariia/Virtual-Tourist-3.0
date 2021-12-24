@@ -29,6 +29,7 @@
         <!--Virtual Tourist-->
         <scene sceneID="cwi-me-p2y">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="38e-FP-9sg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="wBU-aE-tpp" customClass="TravelMapViewController" customModule="Virtual_Tourist_3_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uoN-Xg-KKS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -38,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outlet property="delegate" destination="wBU-aE-tpp" id="i36-dX-6Kg"/>
+                                    <outlet property="delegate" destination="wBU-aE-tpp" id="rQp-UV-JpQ"/>
                                 </connections>
                             </mapView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGB-mN-Clj" userLabel="Tap Pins To Delete">
@@ -79,11 +80,10 @@
                     <connections>
                         <outlet property="deletePinsMessage" destination="dGB-mN-Clj" id="KAG-ZL-pDV"/>
                         <outlet property="editButton" destination="FtN-Qp-HwF" id="EC1-9c-tBU"/>
-                        <outlet property="mapView" destination="gIH-fM-Puv" id="OpU-zM-OSY"/>
+                        <outlet property="mapView" destination="gIH-fM-Puv" id="2RA-zg-Ny9"/>
                         <segue destination="ASi-pw-0BV" kind="show" identifier="GoToPhotosVC" id="s3F-iH-2aA"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="38e-FP-9sg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="850.72463768115949" y="97.767857142857139"/>
         </scene>
