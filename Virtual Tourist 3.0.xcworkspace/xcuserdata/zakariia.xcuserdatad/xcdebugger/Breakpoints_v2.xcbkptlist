@@ -7,48 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2B3E4F7B-355E-4D2C-B159-8F78515CFAC0"
+            uuid = "A721FCDA-8E02-45E9-8AD0-BC7068FD51E3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Virtual Tourist 3.0/Controllers/TravelMapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "addPinsToTheMapLongTap(_:)"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "addPinsToMap(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "244BC903-D44D-4680-BBB2-7BF1C6DE1E0C"
+            uuid = "0D671254-A83C-4E58-A4C4-A606018E5D61"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Virtual Tourist 3.0/Controllers/TravelMapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "addPinsToTheMapLongTap(_:)"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "addPinsToMap(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ABAD6EF1-0E44-4336-AFBE-FEF166B68B82"
+            uuid = "62FD9AC6-5990-42A2-A687-48369F40ADFB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Virtual Tourist 3.0/Controllers/TravelMapViewController+MapViewMethods.swift"
+            filePath = "Virtual Tourist 3.0/Controllers/TravelMapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "mapView(_:didSelect:)"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "addPinsToMap(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

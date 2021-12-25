@@ -56,19 +56,16 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        // call the setup Long Tap Gesture function
-        setupLongTapGestureRecognizer()
-        
-
         // call editButton
         setupForEditDoneButton()
+        
         
         
         // call the fetch request for pins
         fetchRequestForPins()
         
+        // call the setup Long Tap Gesture function
+        setupLongTapGestureRecognizer()
         print("view has loaded")
      
     }
@@ -118,10 +115,6 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    
-    
-    
-    
     func setupLongTapGestureRecognizer(){
 
         // create the Long Tapn Gesture
@@ -131,7 +124,7 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
         mapView.addGestureRecognizer(longTapGestureRecognizer)
 
         // set the min press duration to 0.5
-        longTapGestureRecognizer.minimumPressDuration = 0.5
+        longTapGestureRecognizer.minimumPressDuration = 0.3
 
         // assign the Long Tap Gesture Delegate
         longTapGestureRecognizer.delegate = self
@@ -141,55 +134,77 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
 
     }
     
+    func requestFlickrPhotosFromPin(coordinate: CLLocationCoordinate2D){
+        
+        
+
+        
+        FlickrClient.sharedInstance().getPhotosPath(lat: coordinate.latitude, lon: coordinate.longitude) { photos, error in
+
+            // check that the request was successful
+            if let photos = photos {
+
+                // store the photos in the 'photos' object
+                self.flickrImages = photos
+//                print("\(self.flickrImages.count) flickrImages from  requestFlickrPhotosFromPin")
+//                print("\(photos.count) photosphotosphotosphotosphotos ")
+
+
+            }
+            // else an error occured
+            else {
+                print( error?.localizedDescription ?? "empty error from requestFlickrPhotosFromPin ")
+            }
+        }
+        print("\(flickrImages)")
+
+        
+    }
+  
+    
+    
+    
     @IBAction func addPinsToMap(_ sender: UILongPressGestureRecognizer) {
         print("new pin added")
 
-        if sender.state != .began{
+        if sender.state != .began {
             return
         }
         if !editMode {
-
+            print("long tap ended")
+            
             let gestureTouchLocation : CGPoint = sender.location(in: mapView)
-
+            
             let coordinateToAdd : CLLocationCoordinate2D = mapView.convert(gestureTouchLocation, toCoordinateFrom: mapView)
-
+            
+            
             let annotation : MKPointAnnotation = MKPointAnnotation()
-
+            
             annotation.coordinate = coordinateToAdd
-
+            
             mapView.addAnnotation(annotation)
-
+            
             addPinToCoreData(coordiante: coordinateToAdd)
-
+            
             requestFlickrPhotosFromPin(coordinate: coordinateToAdd)
         }
-
-
-
+//        if sender.state == .began {
+//            print("long tap began")
+//            sender.state = .ended
+//            if sender.state == .ended {
+//                print("long tap ended in .began")
+//            }
+//            return
+//
+//        } else if sender.state == .ended {
+//
+//            if !editMode {
+//
+//               c
+//            }
+//        }
     }
-    
-
-    
-    func requestFlickrPhotosFromPin(coordinate: CLLocationCoordinate2D){
-        FlickrClient.sharedInstance().getPhotosPath(lat: coordinate.latitude, lon: coordinate.longitude) { photos, error in
-            
-            // check that the request was successful
-            if let photos = photos {
-                
-                // store the photos in the 'photos' object
-                self.flickrImages = photos
-//                DispatchQueue.main.async {
-//                    self.performSegue(withIdentifier: "GoToPhotosVC", sender: coordinate)
-//                }
-                
-                // else an error occured
-            } else {
-                print( error ?? "empty error from requestFlickrPhotosFromPin ")
-            }
-        }
-        print("\(flickrImages) flickrImages from  requestFlickrPhotosFromPin")
-    }
-    
+      
     func addPinToCoreData(coordiante : CLLocationCoordinate2D){
         // Purpose of CoreData is to create and store pins
         
@@ -205,10 +220,8 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
 
-    
+
 }
-
-
 // MARK: - Extension for TravelMapViewController
 extension TravelMapViewController {
 
@@ -218,25 +231,6 @@ extension TravelMapViewController {
             
             print("prepare for segue called")
 
-//            let photoAlbumViewController = PhotosAlbumViewController()
-//
-//            // sender is a coordinate that is placed on the map
-//
-//            let coordinateFromSender = sender as! CLLocationCoordinate2D
-//
-//            // pass the data controller
-//            photoAlbumViewController.dataControllerClass = dataControllerClass
-//
-//            // pass the pin selected to PhotosAlbumViewControlle
-//            photoAlbumViewController.pinPassedFromTravelMapViewController = pinToBePassed
-//            print("\(pinToBePassed) pinToBePassed 📌")
-//
-//            //pass the coordinates of the pin selected to PhotosAlbumViewController
-//            photoAlbumViewController.coordianteForPinPassedFromTravelMapViewController = coordinateFromSender
-//            print("\(coordinateFromSender)coordinateFromSender 🧭")
-//
-//            // pass the flick images
-//            photoAlbumViewController.flickerPhotos = flickrImages
             
             let photoAlbumVC = segue.destination as! PhotosAlbumViewController
             

@@ -70,11 +70,6 @@ class PhotosAlbumViewController: UIViewController {
         print("PhotosAlbumViewController loaded")
         
         
-        // hide new collection button
-        //        newCollectionButton.isHidden = false
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,8 +99,6 @@ class PhotosAlbumViewController: UIViewController {
         let annotationToBeAdded = MKPointAnnotation()
         
         annotationToBeAdded.coordinate = coordianteForPinPassedFromTravelMapViewController
-        
-        
         
         mapPiece.addAnnotation(annotationToBeAdded)
         
@@ -157,6 +150,7 @@ class PhotosAlbumViewController: UIViewController {
             
             // append the new indexPath in the indexPathArray
             selected.append(indexPath.item)
+            
         }
         
         return selected
@@ -169,7 +163,7 @@ class PhotosAlbumViewController: UIViewController {
             // request new collection photos
             /// TODO:-  should I remove the photos from the coredata and/or flickrPhotos array here ?// MARK: -
             
-//            coreDataPhotos.removeAll()
+            coreDataPhotos.removeAll()
             // remove core data photos
             for photo in coreDataPhotos {
                 dataControllerClass.viewContext.delete(photo)
