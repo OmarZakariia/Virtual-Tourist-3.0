@@ -187,22 +187,14 @@ class TravelMapViewController: UIViewController, UIGestureRecognizerDelegate {
             addPinToCoreData(coordiante: coordinateToAdd)
             
             requestFlickrPhotosFromPin(coordinate: coordinateToAdd)
+
+            let regionRadius = MKCoordinateRegion(center: coordinateToAdd, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+            mapView.setRegion(regionRadius, animated: true)
+        
+            
+            
         }
-//        if sender.state == .began {
-//            print("long tap began")
-//            sender.state = .ended
-//            if sender.state == .ended {
-//                print("long tap ended in .began")
-//            }
-//            return
-//
-//        } else if sender.state == .ended {
-//
-//            if !editMode {
-//
-//               c
-//            }
-//        }
+
     }
       
     func addPinToCoreData(coordiante : CLLocationCoordinate2D){

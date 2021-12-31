@@ -41,6 +41,8 @@ class FlickrClient : NSObject {
         
         // parameters for the web request
         
+        
+        
         let methodParameters: [String : Any] = [
             FlickrClient.ParameterKeys.Method: FlickrClient.ParameterValues.SearchMethod,
             FlickrClient.ParameterKeys.ApiKey: FlickrClient.ParameterValues.ApiKey,
@@ -53,8 +55,11 @@ class FlickrClient : NSObject {
             FlickrClient.ParameterKeys.Radius: FlickrClient.ParameterValues.SearchRangeKm,
             FlickrClient.ParameterKeys.PerPage: FlickrClient.ParameterValues.PerPageAmount,
             FlickrClient.ParameterKeys.Page: Int(arc4random_uniform(6))
+             
 
         ]
+        
+        print("\(FlickrClient.ParameterKeys.PerPage.count) total number of pages?")
         
         
         // pass taskForGetMethod
