@@ -43,6 +43,47 @@ class FlickrClient : NSObject {
         
         
         
+        /*
+         
+         
+         per_page --> number of photos to return to per page, default is 100 and max is 500
+         
+         page --> page of results to return, default 1
+         
+         
+         
+         Task:
+            1- query the API with page = 1, get an entry for total photos available for location
+         RECORD THIS NUMBER
+         
+            2- Next time I query the API, I should calculate the total number of pages
+         
+                total photos available
+                    ------------
+                    page size
+         
+         then query the API with page = randomNumber
+         
+         randomNumber = randomNumber between 0 and number of pages calculated eariler
+         
+         
+         
+         min(pages, 4000/per_page)
+         per_page --> number of photos per page
+         
+         issue 2 requests
+         
+         1) get the pages value
+         
+         2) fetch the pictures --> with the random number selected
+         */
+        
+    
+        print("\(FlickrClient.ParameterKeys.Page.count)FlickrClient.ParameterKeys.Page")
+        print("\(FlickrClient.ParameterValues.PerPageAmount)FlickrClient.ParameterValues.PerPageAmount")
+        
+        
+        
         let methodParameters: [String : Any] = [
             FlickrClient.ParameterKeys.Method: FlickrClient.ParameterValues.SearchMethod,
             FlickrClient.ParameterKeys.ApiKey: FlickrClient.ParameterValues.ApiKey,
@@ -53,13 +94,18 @@ class FlickrClient : NSObject {
             FlickrClient.ParameterKeys.SafeSearch: FlickrClient.ParameterValues.UseSafeSearch,
             FlickrClient.ParameterKeys.Extras: FlickrClient.ParameterValues.MediumURL,
             FlickrClient.ParameterKeys.Radius: FlickrClient.ParameterValues.SearchRangeKm,
-            FlickrClient.ParameterKeys.PerPage: FlickrClient.ParameterValues.PerPageAmount,
-            FlickrClient.ParameterKeys.Page: Int(arc4random_uniform(6))
+            FlickrClient.ParameterKeys.PerPage : FlickrClient.ParameterValues.PerPageAmount,
+            FlickrClient.ParameterKeys.Page : Int(arc4random_uniform(6))
              
 
         ]
         
-        print("\(FlickrClient.ParameterKeys.PerPage.count) total number of pages?")
+       
+//        print("\(methodParameters) methodParameters printed ")
+        
+        
+        
+        
         
         
         // pass taskForGetMethod
